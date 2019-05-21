@@ -25,7 +25,7 @@ Build the sample application to test pi connectivity
 docker build -f Dockerfile -t pitest:latest
 ```
 
-## Execute the Docker File to Test Connection
+## Execute the Test Code Base Docker File to Test Connection
 
 Execute the container and feed it credentials to test connectivity to PI from a Container
 ```powershell
@@ -42,3 +42,13 @@ docker run -it `
     -e PI_SERVER=$Env:PI_SERVER `
     pitest:latest
 ```
+
+## Build the IoT Edge Module
+
+Build the sample application to test pi connectivity
+```powershell
+cd module
+docker build -f module.Dockerfile -t custom-win-sensor:latest .
+```
+
+## Deploy the IoT Edge Module
