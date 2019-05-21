@@ -22,7 +22,7 @@ docker build -f runtime.Dockerfile -t osi-runtime:4.7.2 .
 
 Build the sample application to test pi connectivity
 ```powershell
-docker build -f Dockerfile -t pitest:latest.
+docker build -f Dockerfile -t pitest:latest .
 ```
 
 ## Execute the Test Code Base Docker File to Test Connection
@@ -33,13 +33,15 @@ Execute the container and feed it credentials to test connectivity to PI from a 
 $Env:PI_USER = "pi_user"
 $Env:PI_PASSSWORD = "pi_password"
 $Env:PI_DOMAIN = "pi_domain"
-$Env:PI_SERVER = "pi_server.com"
+$Env:AF_NAME = "pi_server.com"
+$Env:PI_NAME = "pi_name"
 
 docker run -it `
     -e PI_USER=$Env:PI_USER `
     -e PI_PASSWORD=$Env:PI_PASSWORD `
     -e PI_DOMAIN=$Env:PI_DOMAIN `
-    -e PI_SERVER=$Env:PI_SERVER `
+    -e AF_NAME=$Env:AF_NAME `
+    -e PI_NAME=$Env:PI_NAME `
     pitest:latest
 ```
 
