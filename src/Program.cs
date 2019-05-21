@@ -17,8 +17,12 @@ namespace afs
             
             try
             {
-                Console.Write("Hostname of AF Server:" + afname);
+                Console.WriteLine("Hostname of AF Server:" + afname);
                 PISystem sys = new PISystems()[afname];
+                if(sys == null)
+                {
+                    throw new Exception("PI System is null");
+                }
                 var cred = new NetworkCredential(username, password, domain);
                 sys.Connect(cred);
 
@@ -33,7 +37,7 @@ namespace afs
 
             try
             {
-                Console.Write("Hostname of PI Data Archive:" + piname);
+                Console.WriteLine("Hostname of PI Data Archive:" + piname);
                 PIServer srv = new PIServers()[piname];
                 srv.Connect();
                 Console.WriteLine("PI version:" + srv.ServerVersion + "\tPI name:" + srv.Name);
